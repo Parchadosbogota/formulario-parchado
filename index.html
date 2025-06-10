@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -66,6 +66,9 @@
       content: "⚠️ ";
       color: #c0392b;
     }
+    details p {
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -103,32 +106,32 @@
       <label>Contacto de emergencia (nombre y teléfono) *</label>
       <input type="text" name="emergencia" required>
 
+      <!-- Condición médica -->
+      <label class="important">¿Tienes alguna condición médica que pueda afectar tu participación?</label>
+      <textarea name="condicion_medica" required></textarea>
+
+      <!-- Exoneración: texto oculto, checkbox visible -->
       <details>
-        <summary class="important">¿Tienes alguna condición médica que pueda afectar tu participación?</summary>
-        <textarea name="condicion_medica" required></textarea>
+        <summary class="important">⚠️ Exoneración de Responsabilidad (haz clic para leer)</summary>
+        <p>Declaro que participo de manera libre, voluntaria y bajo mi propia responsabilidad en la actividad recreativa organizada por Cristian Camilo Guzmán Morales, quien lidera el grupo comunitario conocido como Parchados. Reconozco expresamente que esta actividad no es ofrecida por una agencia de turismo, ni está respaldada por una entidad comercial o legalmente constituida, sino que se trata de una convocatoria independiente con fines recreativos, sociales y de bienestar.</p>
+        <p>Entiendo que la participación en este tipo de actividades al aire libre implica riesgos, los cuales asumo de manera consciente y voluntaria. Por tanto, exonero de toda responsabilidad civil, penal, contractual o extracontractual a Cristian Camilo Guzmán Morales frente a cualquier incidente, lesión, pérdida material, afectación emocional o inconveniente que pudiera surgir durante el desarrollo de la jornada.</p>
+        <p>Declaro además que me encuentro en condiciones físicas y de salud adecuadas para participar, que he sido informado/a de la naturaleza, duración y nivel de exigencia de la actividad, y que actuaré con responsabilidad, respeto a las indicaciones logísticas y conciencia de autocuidado en todo momento.</p>
       </details>
+      <label><input type="checkbox" name="acepta_exoneracion" required> Acepto los términos anteriores *</label>
 
+      <!-- Autorización de imagen -->
       <details>
-        <summary class="important">⚠️ Exoneración de Responsabilidad</summary>
-        <p>Declaro que participo de manera libre, voluntaria y bajo mi propia responsabilidad en la actividad recreativa organizada por Cristian Camilo Guzmán Morales, quien lidera el grupo comunitario conocido como Parchados. Reconozco expresamente que esta actividad no es ofrecida por una agencia de turismo, ni está respaldada por una entidad comercial o legalmente constituida, sino que se trata de una convocatoria independiente con fines recreativos, sociales y de bienestar.
-
-Entiendo que la participación en este tipo de actividades al aire libre implica riesgos, los cuales asumo de manera consciente y voluntaria. Por tanto, exonero de toda responsabilidad civil, penal, contractual o extracontractual a Cristian Camilo Guzmán Morales frente a cualquier incidente, lesión, pérdida material, afectación emocional o inconveniente que pudiera surgir durante el desarrollo de la jornada.
-
-Declaro además que me encuentro en condiciones físicas y de salud adecuadas para participar, que he sido informado/a de la naturaleza, duración y nivel de exigencia de la actividad, y que actuaré con responsabilidad, respeto a las indicaciones logísticas y conciencia de autocuidado en todo momento.
-</p>
-        <label><input type="checkbox" name="acepta_exoneracion" required> Acepto los términos anteriores *</label>
+        <summary>📸 Autorización de uso de imagen (haz clic para leer)</summary>
+        <p>Autorizo el uso de mi imagen (foto o video) para fines de difusión de actividades del grupo en redes sociales y otros medios, sin ánimo comercial.</p>
       </details>
+      <label><input type="checkbox" name="autorizo_imagen" required> Acepto el uso de mi imagen *</label>
 
+      <!-- Tratamiento de datos -->
       <details>
-        <summary>📸 Autorización de uso de imagen</summary>
-        <label><input type="checkbox" name="autorizo_imagen" required> Autorizo el uso de mi imagen (foto o video) para fines de difusión de actividades del grupo en redes sociales y otros medios, sin ánimo comercial. *</label>
+        <summary>🔐 Autorización para tratamiento de datos personales (haz clic para leer)</summary>
+        <p>Acepto el tratamiento de mis datos personales conforme a la Ley 1581 de 2012. Autorizo al colectivo a almacenar y tratar mis datos personales con fines exclusivamente logísticos para la actividad actual. No se compartirán con terceros.</p>
       </details>
-
-      <details>
-        <summary>🔐 Autorización para tratamiento de datos personales</summary>
-        <label><input type="checkbox" name="autorizo_datos" required> Acepto el tratamiento de mis datos personales conforme a la Ley 1581 de 2012 Autorizo al colectivo a almacenar y tratar mis datos personales con fines exclusivamente logísticos para la actividad actual.
-No se compartirán con terceros. *</label>
-      </details>
+      <label><input type="checkbox" name="autorizo_datos" required> Acepto el tratamiento de mis datos personales *</label>
 
       <button type="submit">Enviar</button>
     </form>
@@ -151,7 +154,7 @@ No se compartirán con terceros. *</label>
     try {
       const res = await fetch(FORM_URL, {
         method: "POST",
-        mode: "no-cors", // IMPORTANTE para evitar bloqueos CORS
+        mode: "no-cors",
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
@@ -159,14 +162,14 @@ No se compartirán con terceros. *</label>
       });
 
       alert("✅ Gracias por registrarte. ¡Nos vemos en la aventura!\nÚnete a nuestro grupo de WhatsApp.");
-      window.location.href = "https://chat.whatsapp.com/DVwfoAToaKi2gcLAG2YTbS"; // Reemplaza por tu grupo real
+      window.location.href = "https://chat.whatsapp.com/DVwfoAToaKi2gcLAG2YTbS";
       form.reset();
     } catch (error) {
       console.error("Error al enviar:", error);
       alert("❌ Error de conexión. Intenta más tarde.");
     }
   });
-</script>
+  </script>
 
 </body>
 </html>
