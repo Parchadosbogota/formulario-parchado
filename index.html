@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario Actividad Parchados</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #FF914D, #FFC3A0, #B28DFF);
+      padding: 0 20px 40px;
+    }
+    .banner {
+      width: 100%;
+      max-height: 180px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .form-container {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      max-width: 700px;
+      margin: 20px auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    h2 {
+      text-align: center;
+      color: #2E294E;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      color: #333;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+    button {
+      background-color: #FF914D;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #e87e33;
+    }
+    summary {
+      font-weight: bold;
+      font-size: 1em;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    .important::before {
+      content: "⚠️ ";
+      color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <img src="img/logo.png" alt="Logo Parchados" class="banner">
+  <div class="form-container">
+    <h2>📝 Registro Actividad - Parchados</h2>
+    <form id="formulario-parchados">
+      <label>Nombre completo *</label>
+      <input type="text" name="nombre" required>
+
+      <label>Tipo de documento *</label>
+      <select name="tipo_documento" required>
+        <option value="">Seleccione</option>
+        <option value="cc">Cédula de ciudadanía</option>
+        <option value="ti">Tarjeta de identidad</option>
+        <option value="ps">Pasaporte</option>
+        <option value="ce">Cédula extranjera</option>
+      </select>
+
+      <label>Número de documento *</label>
+      <input type="text" name="documento" required>
+
+      <label>Fecha de nacimiento *</label>
+      <input type="date" name="fecha_nacimiento" required>
+
+      <label>EPS o entidad de salud *</label>
+      <input type="text" name="eps" required>
+
+      <label>Número de contacto (WhatsApp) *</label>
+      <input type="tel" name="telefono" required>
+
+      <label>Correo electrónico *</label>
+      <input type="email" name="correo" required>
+
+      <label>Contacto de emergencia (nombre y teléfono) *</label>
+      <input type="text" name="emergencia" required>
+
+      <details>
+        <summary class="important">¿Tienes alguna condición médica que pueda afectar tu participación?</summary>
+        <textarea name="condicion_medica" required></textarea>
+      </details>
+
+      <details>
+        <summary class="important">⚠️ Exoneración de Responsabilidad</summary>
+        <p>Declaro que participo de manera libre, voluntaria y bajo mi propia responsabilidad en la actividad recreativa organizada por Cristian Camilo Guzmán Morales, quien lidera el grupo comunitario conocido como Parchados. Reconozco expresamente que esta actividad no es ofrecida por una agencia de turismo, ni está respaldada por una entidad comercial o legalmente constituida, sino que se trata de una convocatoria independiente con fines recreativos, sociales y de bienestar.
+
+Entiendo que la participación en este tipo de actividades al aire libre implica riesgos, los cuales asumo de manera consciente y voluntaria. Por tanto, exonero de toda responsabilidad civil, penal, contractual o extracontractual a Cristian Camilo Guzmán Morales frente a cualquier incidente, lesión, pérdida material, afectación emocional o inconveniente que pudiera surgir durante el desarrollo de la jornada.
+
+Declaro además que me encuentro en condiciones físicas y de salud adecuadas para participar, que he sido informado/a de la naturaleza, duración y nivel de exigencia de la actividad, y que actuaré con responsabilidad, respeto a las indicaciones logísticas y conciencia de autocuidado en todo momento.
+</p>
+        <label><input type="checkbox" name="acepta_exoneracion" required> Acepto los términos anteriores *</label>
+      </details>
+
+      <details>
+        <summary>📸 Autorización de uso de imagen</summary>
+        <label><input type="checkbox" name="autorizo_imagen" required> Autorizo el uso de mi imagen (foto o video) para fines de difusión de actividades del grupo en redes sociales y otros medios, sin ánimo comercial. *</label>
+      </details>
+
+      <details>
+        <summary>🔐 Autorización para tratamiento de datos personales</summary>
+        <label><input type="checkbox" name="autorizo_datos" required> Acepto el tratamiento de mis datos personales conforme a la Ley 1581 de 2012 Autorizo al colectivo a almacenar y tratar mis datos personales con fines exclusivamente logísticos para la actividad actual.
+No se compartirán con terceros. *</label>
+      </details>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <script>
+  const FORM_URL = "https://script.google.com/macros/s/AKfycbz_bWtAdsJaXbAP5_6hXRL4tCqxEcPDVGPlHJ7Yj0SJ_0fubHGAt9DkCC3SRF9c2HIF/exec";
+
+  document.getElementById("formulario-parchados").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const data = {};
+
+    for (const [key, value] of formData.entries()) {
+      data[key] = value;
+    }
+
+    try {
+      const res = await fetch(FORM_URL, {
+        method: "POST",
+        mode: "no-cors", // IMPORTANTE para evitar bloqueos CORS
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      alert("✅ Gracias por registrarte. ¡Nos vemos en la aventura!\nÚnete a nuestro grupo de WhatsApp.");
+      window.location.href = "https://chat.whatsapp.com/DVwfoAToaKi2gcLAG2YTbS"; // Reemplaza por tu grupo real
+      form.reset();
+    } catch (error) {
+      console.error("Error al enviar:", error);
+      alert("❌ Error de conexión. Intenta más tarde.");
+    }
+  });
+</script>
+
+</body>
+</html>
