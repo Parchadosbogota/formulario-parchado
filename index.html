@@ -79,6 +79,14 @@
       <label>Nombre completo *</label>
       <input type="text" name="nombre" required>
 
+<label>¿A qué actividad te inscribiste? *</label>
+<select name="actividad" required>
+  <option value="">Selecciona una actividad</option>
+  <option value="Rocas de Suesca">Rocas de Suesca</option>
+  <option value="Cuevas de Tenjo">Cuevas de Tenjo</option>
+  <option value="Salto de las Monjas">Salto de las Monjas</option>
+</select>
+
       <label>Tipo de documento *</label>
       <select name="tipo_documento" required>
         <option value="">Seleccione</option>
@@ -132,13 +140,21 @@
         <p>Acepto el tratamiento de mis datos personales conforme a la Ley 1581 de 2012. Autorizo al colectivo a almacenar y tratar mis datos personales con fines exclusivamente logísticos para la actividad actual. No se compartirán con terceros.</p>
       </details>
       <label><input type="checkbox" name="autorizo_datos" required> Acepto el tratamiento de mis datos personales *</label>
+      <!-- TÉRMINO: Seguro de actividad brindado por Parchados -->
+<details>
+  <summary>🛡️ Seguro para la actividad (haz clic para leer)</summary>
+  <p>La actividad incluye un seguro de accidentes para el día del evento, proporcionado por el equipo de Parchados. Este seguro brinda respaldo básico en caso de imprevistos durante la caminata, jornada de senderismo u otra actividad al aire libre.</p>
+  <p>Es importante que hayas suministrado tus datos correctamente para que el seguro pueda ser gestionado de manera efectiva. En caso de requerir atención, comunícate de inmediato con el organizador durante la jornada.</p>
+</details>
+<label><input type="checkbox" name="seguro_actividad" required> Confirmo que he leído y comprendo la cobertura del seguro proporcionado *</label>
+
 
       <button type="submit">Enviar</button>
     </form>
   </div>
 
   <script>
-  const FORM_URL = "https://script.google.com/macros/s/AKfycbz_bWtAdsJaXbAP5_6hXRL4tCqxEcPDVGPlHJ7Yj0SJ_0fubHGAt9DkCC3SRF9c2HIF/exec";
+  const FORM_URL = "https://script.google.com/macros/s/AKfycbyLV_D4nHPQV8DmG466LhfP_FPSxhuAxfTRHuu3Rj9kU1x5A-zzwFWriqjqi0XKf5dL_A/exec";
 
   document.getElementById("formulario-parchados").addEventListener("submit", async function (e) {
     e.preventDefault();
