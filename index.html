@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -52,6 +52,7 @@
       font-size: 1em;
       margin-top: 20px;
       cursor: pointer;
+      width: 100%;
     }
     button:hover {
       background-color: #e87e33;
@@ -69,124 +70,169 @@
     details p {
       margin-top: 10px;
     }
+    /* ocultar por defecto */
+    #form-resto,
+    #seguro-section {
+      display: none;
+    }
   </style>
 </head>
 <body>
   <img src="img/logo.png" alt="Logo Parchados" class="banner">
   <div class="form-container">
     <h2>📝 Registro Actividad - Parchados</h2>
+
     <form id="formulario-parchados">
+      <!-- Siempre visible -->
       <label>Nombre completo *</label>
       <input type="text" name="nombre" required>
 
-<label>¿A qué actividad te inscribiste? *</label>
-<select name="actividad" required>
-  <option value="">Selecciona una actividad</option>
-  <option value="Rocas de Suesca">7 cascadas</option>
-  <option value="Cuevas de Tenjo">Sasaima</option>
-  <option value="Salto de las Monjas">Altos de Patios</option>
-</select>
-
-      <label>Tipo de documento *</label>
-      <select name="tipo_documento" required>
-        <option value="">Seleccione</option>
-        <option value="cc">Cédula de ciudadanía</option>
-        <option value="ti">Tarjeta de identidad</option>
-        <option value="ps">Pasaporte</option>
-        <option value="ce">Cédula extranjera</option>
+      <label>¿A qué actividad te inscribiste? *</label>
+      <select name="actividad" id="actividad" required>
+        <option value="">Selecciona una actividad</option>
+        <option value="senderismo_patios_gratis">senderismo patios gratis</option>
+        <option value="7_cascadas_arcoiris">7 cascadas arcoíris</option>
+        <option value="cayoning_sasaima">cayoning Sasaima</option>
       </select>
 
-      <label>Número de documento *</label>
-      <input type="text" name="documento" required>
+      <!-- resto de preguntas -->
+      <div id="form-resto">
+        <label>Tipo de documento *</label>
+        <select name="tipo_documento" required>
+          <option value="">Seleccione</option>
+          <option value="cc">Cédula de ciudadanía</option>
+          <option value="ti">Tarjeta de identidad</option>
+          <option value="ps">Pasaporte</option>
+          <option value="ce">Cédula extranjera</option>
+        </select>
 
-      <label>Fecha de nacimiento *</label>
-      <input type="date" name="fecha_nacimiento" required>
+        <label>Número de documento *</label>
+        <input type="text" name="documento" required>
 
-      <label>EPS o entidad de salud *</label>
-      <input type="text" name="eps" required>
+        <label>Fecha de nacimiento *</label>
+        <input type="date" name="fecha_nacimiento" required>
 
-      <label>Número de contacto (WhatsApp) *</label>
-      <input type="tel" name="telefono" required>
+        <label>EPS o entidad de salud *</label>
+        <input type="text" name="eps" required>
 
-      <label>Correo electrónico *</label>
-      <input type="email" name="correo" required>
+        <label>Número de contacto (WhatsApp) *</label>
+        <input type="tel" name="telefono" required>
 
-      <label>Contacto de emergencia (nombre y teléfono) *</label>
-      <input type="text" name="emergencia" required>
+        <label>Correo electrónico *</label>
+        <input type="email" name="correo" required>
 
-      <!-- Condición médica -->
-      <label class="important">¿Tienes alguna condición médica que pueda afectar tu participación?</label>
-      <textarea name="condicion_medica" required></textarea>
+        <label>Contacto de emergencia (nombre y teléfono) *</label>
+        <input type="text" name="emergencia" required>
 
-      <!-- Exoneración: texto oculto, checkbox visible -->
-      <details>
-        <summary class="important">⚠️ Exoneración de Responsabilidad (haz clic para leer)</summary>
-        <p>Declaro que participo de manera libre, voluntaria y bajo mi propia responsabilidad en la actividad recreativa organizada por Cristian Camilo Guzmán Morales, quien lidera el grupo comunitario conocido como Parchados. Reconozco expresamente que esta actividad no es ofrecida por una agencia de turismo, ni está respaldada por una entidad comercial o legalmente constituida, sino que se trata de una convocatoria independiente con fines recreativos, sociales y de bienestar.</p>
-        <p>Entiendo que la participación en este tipo de actividades al aire libre implica riesgos, los cuales asumo de manera consciente y voluntaria. Por tanto, exonero de toda responsabilidad civil, penal, contractual o extracontractual a Cristian Camilo Guzmán Morales frente a cualquier incidente, lesión, pérdida material, afectación emocional o inconveniente que pudiera surgir durante el desarrollo de la jornada.</p>
-        <p>Declaro además que me encuentro en condiciones físicas y de salud adecuadas para participar, que he sido informado/a de la naturaleza, duración y nivel de exigencia de la actividad, y que actuaré con responsabilidad, respeto a las indicaciones logísticas y conciencia de autocuidado en todo momento.</p>
-      </details>
-      <label><input type="checkbox" name="acepta_exoneracion" required> Acepto los términos anteriores *</label>
+        <!-- Condición médica -->
+        <label class="important">¿Tienes alguna condición médica que pueda afectar tu participación?</label>
+        <textarea name="condicion_medica" required></textarea>
 
-      <!-- Autorización de imagen -->
-      <details>
-        <summary>📸 Autorización de uso de imagen (haz clic para leer)</summary>
-        <p>Autorizo el uso de mi imagen (foto o video) para fines de difusión de actividades del grupo en redes sociales y otros medios, sin ánimo comercial.</p>
-      </details>
-      <label><input type="checkbox" name="autorizo_imagen" required> Acepto el uso de mi imagen *</label>
+        <!-- Exoneración -->
+        <details>
+          <summary class="important">⚠️ Exoneración de Responsabilidad (haz clic para leer)</summary>
+          <p>Declaro que participo de manera libre, voluntaria y bajo mi propia responsabilidad...</p>
+        </details>
+        <label><input type="checkbox" name="acepta_exoneracion" required> Acepto los términos anteriores *</label>
 
-      <!-- Tratamiento de datos -->
-      <details>
-        <summary>🔐 Autorización para tratamiento de datos personales (haz clic para leer)</summary>
-        <p>Acepto el tratamiento de mis datos personales conforme a la Ley 1581 de 2012. Autorizo al colectivo a almacenar y tratar mis datos personales con fines exclusivamente logísticos para la actividad actual. No se compartirán con terceros.</p>
-      </details>
-      <label><input type="checkbox" name="autorizo_datos" required> Acepto el tratamiento de mis datos personales *</label>
-      <!-- TÉRMINO: Seguro de actividad brindado por Parchados -->
-<details>
-  <summary>🛡️ Seguro para la actividad (haz clic para leer)</summary>
-  <p>La actividad incluye un seguro de accidentes para el día del evento, proporcionado por el equipo de Parchados. Este seguro brinda respaldo básico en caso de imprevistos durante la caminata, jornada de senderismo u otra actividad al aire libre.</p>
-  <p>Es importante que hayas suministrado tus datos correctamente para que el seguro pueda ser gestionado de manera efectiva. En caso de requerir atención, comunícate de inmediato con el organizador durante la jornada.</p>
-</details>
-<label><input type="checkbox" name="seguro_actividad" required> Confirmo que he leído y comprendo la cobertura del seguro proporcionado *</label>
+        <!-- Autorización de imagen -->
+        <details>
+          <summary>📸 Autorización de uso de imagen (haz clic para leer)</summary>
+          <p>Autorizo el uso de mi imagen (foto o video)...</p>
+        </details>
+        <label><input type="checkbox" name="autorizo_imagen" required> Acepto el uso de mi imagen *</label>
 
+        <!-- Tratamiento de datos -->
+        <details>
+          <summary>🔐 Autorización para tratamiento de datos personales (haz clic para leer)</summary>
+          <p>Acepto el tratamiento de mis datos personales conforme a la Ley 1581 de 2012...</p>
+        </details>
+        <label><input type="checkbox" name="autorizo_datos" required> Acepto el tratamiento de mis datos personales *</label>
 
-      <button type="submit">Enviar</button>
+        <!-- Seguro -->
+        <div id="seguro-section">
+          <details>
+            <summary>🛡️ Seguro para la actividad (haz clic para leer)</summary>
+            <p>La actividad incluye un seguro de accidentes...</p>
+          </details>
+          <label><input type="checkbox" name="seguro_actividad" id="seguro_actividad"> Confirmo que he leído y comprendo la cobertura del seguro proporcionado *</label>
+        </div>
+
+        <button type="submit">Enviar</button>
+      </div>
     </form>
   </div>
 
   <script>
-  const FORM_URL = "https://script.google.com/macros/s/AKfycbyLV_D4nHPQV8DmG466LhfP_FPSxhuAxfTRHuu3Rj9kU1x5A-zzwFWriqjqi0XKf5dL_A/exec";
+    const FORM_URL = "https://script.google.com/macros/s/AKfycbyLV_D4nHPQV8DmG466LhfP_FPSxhuAxfTRHuu3Rj9kU1x5A-zzwFWriqjqi0XKf5dL_A/exec";
 
-  document.getElementById("formulario-parchados").addEventListener("submit", async function (e) {
-    e.preventDefault();
+    const actividad = document.getElementById("actividad");
+    const formResto = document.getElementById("form-resto");
+    const seguroSection = document.getElementById("seguro-section");
+    const seguroCheckbox = document.getElementById("seguro_actividad");
 
-    const form = e.target;
-    const formData = new FormData(form);
-    const data = {};
+    function actualizarFormulario() {
+      const val = actividad.value;
 
-    for (const [key, value] of formData.entries()) {
-      data[key] = value;
+      if (!val) {
+        formResto.style.display = "none";
+        seguroSection.style.display = "none";
+        seguroCheckbox.required = false;
+        seguroCheckbox.checked = false;
+        return;
+      }
+
+      formResto.style.display = "block";
+
+      if (val === "senderismo_patios_gratis") {
+        seguroSection.style.display = "none";
+        seguroCheckbox.required = false;
+        seguroCheckbox.checked = false;
+      } else {
+        seguroSection.style.display = "block";
+        seguroCheckbox.required = true;
+      }
     }
 
-    try {
-      const res = await fetch(FORM_URL, {
-        method: "POST",
-        mode: "no-cors",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+    actividad.addEventListener("change", actualizarFormulario);
 
-      alert("✅ Gracias por registrarte. ¡Nos vemos en la aventura!\nÚnete a nuestro grupo de WhatsApp.");
-      window.location.href = "https://chat.whatsapp.com/DVwfoAToaKi2gcLAG2YTbS";
-      form.reset();
-    } catch (error) {
-      console.error("Error al enviar:", error);
-      alert("❌ Error de conexión. Intenta más tarde.");
-    }
-  });
+    document.getElementById("formulario-parchados").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const formData = new FormData(form);
+      const data = {};
+
+      for (const [key, value] of formData.entries()) {
+        data[key] = value;
+      }
+
+      try {
+        await fetch(FORM_URL, {
+          method: "POST",
+          mode: "no-cors",
+          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" },
+        });
+
+        const actividadElegida = actividad.value;
+        let whatsappLink = "";
+
+        if (actividadElegida === "senderismo_patios_gratis") {
+          whatsappLink = "https://chat.whatsapp.com/DgmvdOHVKp7G8BTCRyI3o3";
+        } else {
+          whatsappLink = "https://chat.whatsapp.com/Eg0SnfPiEKf7pri86rkzgc";
+        }
+
+        alert("✅ Gracias por registrarte. ¡Nos vemos en la aventura!\nÚnete a nuestro grupo de WhatsApp.");
+        window.location.href = whatsappLink;
+        form.reset();
+        actualizarFormulario();
+      } catch (error) {
+        console.error("Error al enviar:", error);
+        alert("❌ Error de conexión. Intenta más tarde.");
+      }
+    });
   </script>
-
 </body>
 </html>
-
