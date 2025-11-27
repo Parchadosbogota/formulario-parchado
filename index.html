@@ -60,15 +60,11 @@
     summary {
       font-weight: bold;
       font-size: 1em;
-      margin-top: 20px;
       cursor: pointer;
     }
     .important::before {
       content: "⚠️ ";
       color: #c0392b;
-    }
-    details p {
-      margin-top: 10px;
     }
     /* ocultar por defecto */
     #form-resto,
@@ -78,11 +74,14 @@
   </style>
 </head>
 <body>
+
   <img src="img/logo.png" alt="Logo Parchados" class="banner">
+
   <div class="form-container">
     <h2>📝 Registro Actividad - Parchados</h2>
 
     <form id="formulario-parchados">
+
       <!-- Siempre visible -->
       <label>Nombre completo *</label>
       <input type="text" name="nombre" required>
@@ -91,13 +90,12 @@
       <select name="actividad" id="actividad" required>
         <option value="">Selecciona una actividad</option>
         <option value="Bogota_a_la_Calera">Bogota a la Calera</option>
-        <option value="Cayoning_Sasaima_Nov">Cayoning Sasaima</option>
-        <option value="7_cascadas_arcoiris_Nov">7 cascadas arcoíris</option>
-        <option value="senderismo_patios_gratis">senderismo patios gratis</option>
+        <option value="Parchados_al_parque_gratis">Parchados al parque</option>
+        <option value="Asado_sin_animo_de_lucro">Asado despedida de año</option>
       </select>
 
-      <!-- resto de preguntas -->
       <div id="form-resto">
+
         <label>Tipo de documento *</label>
         <select name="tipo_documento" required>
           <option value="">Seleccione</option>
@@ -107,14 +105,18 @@
           <option value="ce">Cédula extranjera</option>
         </select>
 
-        <label>Número de documento *</label>
-        <input type="text" name="documento" required>
+        <div id="documento-field">
+          <label>Número de documento *</label>
+          <input type="text" name="documento" required>
+        </div>
 
         <label>Fecha de nacimiento *</label>
         <input type="date" name="fecha_nacimiento" required>
 
-        <label>EPS o entidad de salud *</label>
-        <input type="text" name="eps" required>
+        <div id="eps-field">
+          <label>EPS o entidad de salud *</label>
+          <input type="text" name="eps" required>
+        </div>
 
         <label>Número de contacto (WhatsApp) *</label>
         <input type="tel" name="telefono" required>
@@ -122,44 +124,48 @@
         <label>Correo electrónico *</label>
         <input type="email" name="correo" required>
 
-        <label>Contacto de emergencia (nombre y teléfono) *</label>
-        <input type="text" name="emergencia" required>
+        <div id="emergencia-field">
+          <label>Contacto de emergencia (nombre y teléfono) *</label>
+          <input type="text" name="emergencia" required>
+        </div>
 
-        <!-- Condición médica -->
-        <label class="important">¿Tienes alguna condición médica que pueda afectar tu participación?</label>
-        <textarea name="condicion_medica" required></textarea>
+        <div id="condicion-medica-field">
+          <label class="important">¿Tienes alguna condición médica que pueda afectar tu participación?</label>
+          <textarea name="condicion_medica" required></textarea>
+        </div>
 
         <!-- Exoneración -->
         <details>
-          <summary class="important">⚠️ Exoneración de Responsabilidad (haz clic para leer)</summary>
-          <p>Declaro que participo de manera libre, voluntaria y bajo mi propia responsabilidad...</p>
+          <summary class="important">⚠️ Exoneración de Responsabilidad</summary>
+          <p>Declaro que participo bajo mi responsabilidad...</p>
         </details>
-        <label><input type="checkbox" name="acepta_exoneracion" required> Acepto los términos anteriores *</label>
+        <label><input type="checkbox" name="acepta_exoneracion" required> Acepto los términos *</label>
 
         <!-- Autorización de imagen -->
         <details>
-          <summary>📸 Autorización de uso de imagen (haz clic para leer)</summary>
-          <p>Autorizo el uso de mi imagen (foto o video)...</p>
+          <summary>📸 Autorización de uso de imagen</summary>
+          <p>Autorizo el uso de mi imagen...</p>
         </details>
         <label><input type="checkbox" name="autorizo_imagen" required> Acepto el uso de mi imagen *</label>
 
         <!-- Tratamiento de datos -->
         <details>
-          <summary>🔐 Autorización para tratamiento de datos personales (haz clic para leer)</summary>
-          <p>Acepto el tratamiento de mis datos personales conforme a la Ley 1581 de 2012...</p>
+          <summary>🔐 Autorización de datos personales</summary>
+          <p>Acepto el tratamiento de mis datos...</p>
         </details>
-        <label><input type="checkbox" name="autorizo_datos" required> Acepto el tratamiento de mis datos personales *</label>
+        <label><input type="checkbox" name="autorizo_datos" required> Acepto tratamiento de datos *</label>
 
         <!-- Seguro -->
         <div id="seguro-section">
           <details>
-            <summary>🛡️ Seguro para la actividad (haz clic para leer)</summary>
-            <p>La actividad incluye un seguro de accidentes...</p>
+            <summary>🛡️ Seguro para la actividad</summary>
+            <p>La actividad incluye seguro de accidentes...</p>
           </details>
-          <label><input type="checkbox" name="seguro_actividad" id="seguro_actividad"> Confirmo que he leído y comprendo la cobertura del seguro proporcionado *</label>
+          <label><input type="checkbox" name="seguro_actividad" id="seguro_actividad"> Confirmo haber leído el seguro *</label>
         </div>
 
         <button type="submit">Enviar</button>
+
       </div>
     </form>
   </div>
@@ -169,32 +175,62 @@
 
     const actividad = document.getElementById("actividad");
     const formResto = document.getElementById("form-resto");
+
     const seguroSection = document.getElementById("seguro-section");
     const seguroCheckbox = document.getElementById("seguro_actividad");
 
+    // Campos a ocultar individualmente
+    const emergenciaField = document.getElementById("emergencia-field");
+    const epsField = document.getElementById("eps-field");
+    const condicionField = document.getElementById("condicion-medica-field");
+    const documentoField = document.getElementById("documento-field");
+
     function actualizarFormulario() {
-      const val = actividad.value;
+      const val = actividad.value.toLowerCase();
 
       if (!val) {
         formResto.style.display = "none";
-        seguroSection.style.display = "none";
-        seguroCheckbox.required = false;
-        seguroCheckbox.checked = false;
         return;
       }
 
       formResto.style.display = "block";
 
-      // Si el nombre contiene "gratis" o "sin_animo_de_lucro", ocultar seguro
-if (val.toLowerCase().includes("gratis") || val.toLowerCase().includes("sin_animo_de_lucro")) {
-    seguroSection.style.display = "none";
-    seguroCheckbox.required = false;
-    seguroCheckbox.checked = false;
-} else {
-    seguroSection.style.display = "block";
-    seguroCheckbox.required = true;
-}
+      const esGratis = val.includes("gratis");
+      const esSinAnimo = val.includes("sin_animo_de_lucro");
 
+      // 🔥 SEGURO
+      if (esGratis || esSinAnimo) {
+        seguroSection.style.display = "none";
+        seguroCheckbox.required = false;
+        seguroCheckbox.checked = false;
+      } else {
+        seguroSection.style.display = "block";
+        seguroCheckbox.required = true;
+      }
+
+      // 🔥 CAMPOS PARA GRATIS
+      if (esGratis) {
+        emergenciaField.style.display = "block";
+        condicionField.style.display = "block";
+        epsField.style.display = "block";
+        documentoField.style.display = "block";
+      }
+
+      // 🔥 CAMPOS PARA SIN_ANIMO_DE_LUCRO
+      if (esSinAnimo) {
+        emergenciaField.style.display = "none";
+        condicionField.style.display = "none";
+        epsField.style.display = "none";
+        documentoField.style.display = "none";
+      }
+
+      // 🔥 PARA ACTIVIDADES NORMALES
+      if (!esGratis && !esSinAnimo) {
+        emergenciaField.style.display = "block";
+        condicionField.style.display = "block";
+        epsField.style.display = "block";
+        documentoField.style.display = "block";
+      }
     }
 
     actividad.addEventListener("change", actualizarFormulario);
@@ -221,7 +257,7 @@ if (val.toLowerCase().includes("gratis") || val.toLowerCase().includes("sin_anim
         const actividadElegida = actividad.value;
         let whatsappLink = "";
 
-        if (actividadElegida === "senderismo_patios_gratis") {
+        if (actividadElegida.includes("gratis")) {
           whatsappLink = "https://chat.whatsapp.com/DgmvdOHVKp7G8BTCRyI3o3";
         } else {
           whatsappLink = "https://chat.whatsapp.com/Eg0SnfPiEKf7pri86rkzgc";
@@ -229,8 +265,10 @@ if (val.toLowerCase().includes("gratis") || val.toLowerCase().includes("sin_anim
 
         alert("✅ Gracias por registrarte. ¡Nos vemos en la aventura!\nÚnete a nuestro grupo de WhatsApp.");
         window.location.href = whatsappLink;
+
         form.reset();
         actualizarFormulario();
+
       } catch (error) {
         console.error("Error al enviar:", error);
         alert("❌ Error de conexión. Intenta más tarde.");
@@ -239,11 +277,3 @@ if (val.toLowerCase().includes("gratis") || val.toLowerCase().includes("sin_anim
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
