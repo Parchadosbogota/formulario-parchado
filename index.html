@@ -185,14 +185,16 @@
 
       formResto.style.display = "block";
 
-      if (val === "senderismo_patios_gratis") {
-        seguroSection.style.display = "none";
-        seguroCheckbox.required = false;
-        seguroCheckbox.checked = false;
-      } else {
-        seguroSection.style.display = "block";
-        seguroCheckbox.required = true;
-      }
+      // Si el nombre contiene "gratis" o "sin_animo_de_lucro", ocultar seguro
+if (val.toLowerCase().includes("gratis") || val.toLowerCase().includes("sin_animo_de_lucro")) {
+    seguroSection.style.display = "none";
+    seguroCheckbox.required = false;
+    seguroCheckbox.checked = false;
+} else {
+    seguroSection.style.display = "block";
+    seguroCheckbox.required = true;
+}
+
     }
 
     actividad.addEventListener("change", actualizarFormulario);
@@ -237,6 +239,7 @@
   </script>
 </body>
 </html>
+
 
 
 
