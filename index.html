@@ -68,7 +68,8 @@
     }
     /* ocultar por defecto */
     #form-resto,
-    #seguro-section {
+    #seguro-section,
+    #talla-field {
       display: none;
     }
   </style>
@@ -89,6 +90,7 @@
       <label>¿A qué actividad te inscribiste? *</label>
       <select name="actividad" id="actividad" required>
         <option value="">Selecciona una actividad</option>
+        <option value="suesca_escalada">Campamento y Escalada Rocas de Suesca</option>
         <option value="Vergara_cundinamarca">Vergara:Cañon/Campamento/Cascada</option>
         <option value="Cara_del_Indio_Choachí">Cara del Indio – Choachí / Cruz Verde</option>
         <option value="san_rafael">bosque del OSO y mirador al embalse san rafael</option>
@@ -114,6 +116,12 @@
 
         <label>Fecha de nacimiento *</label>
         <input type="date" name="fecha_nacimiento" required>
+
+        <!-- CAMPO NUEVO: Talla de zapatos (Solo para Suesca) -->
+        <div id="talla-field">
+          <label>Talla de zapatos (Para préstamo de equipo de escalada) *</label>
+          <input type="number" name="talla_zapatos" id="talla_zapatos" placeholder="Ej: 38">
+        </div>
 
         <div id="eps-field">
           <label>EPS o entidad de salud *</label>
@@ -173,7 +181,7 @@
   </div>
 
   <script>
-    const FORM_URL = "https://script.google.com/macros/s/AKfycbyLV_D4nHPQV8DmG466LhfP_FPSxhuAxfTRHuu3Rj9kU1x5A-zzwFWriqjqi0XKf5dL_A/exec";
+    const FORM_URL = "https://script.google.com/macros/s/AKfycbzFv0m1LctPy-5pklikmsdkYs19ZjK7LV2HiyfPWn88BJ0H7JKWl-8sB9jXt7RWn5zJ/exec";
 
     const actividad = document.getElementById("actividad");
     const formResto = document.getElementById("form-resto");
@@ -186,6 +194,8 @@
     const epsField = document.getElementById("eps-field");
     const condicionField = document.getElementById("condicion-medica-field");
     const documentoField = document.getElementById("documento-field");
+    const tallaField = document.getElementById("talla-field");
+    const tallaInput = document.getElementById("talla_zapatos");
 
     function actualizarFormulario() {
       const val = actividad.value.toLowerCase();
@@ -199,6 +209,17 @@
 
       const esGratis = val.includes("gratis");
       const esSinAnimo = val.includes("sin_animo_de_lucro");
+      const esSuesca = val === "suesca_escalada";
+
+      // 🔥 LÓGICA TALLA DE ZAPATOS
+      if (esSuesca) {
+        tallaField.style.display = "block";
+        tallaInput.required = true;
+      } else {
+        tallaField.style.display = "none";
+        tallaInput.required = false;
+        tallaInput.value = ""; // Limpiar si cambia de opinión
+      }
 
       // 🔥 SEGURO
       if (esGratis || esSinAnimo) {
@@ -210,24 +231,13 @@
         seguroCheckbox.required = true;
       }
 
-      // 🔥 CAMPOS PARA GRATIS
-      if (esGratis) {
-        emergenciaField.style.display = "block";
-        condicionField.style.display = "block";
-        epsField.style.display = "block";
-        documentoField.style.display = "block";
-      }
-
-      // 🔥 CAMPOS PARA SIN_ANIMO_DE_LUCRO
+      // 🔥 VISIBILIDAD DE CAMPOS SEGÚN TIPO
       if (esSinAnimo) {
         emergenciaField.style.display = "none";
         condicionField.style.display = "none";
         epsField.style.display = "none";
         documentoField.style.display = "none";
-      }
-
-      // 🔥 PARA ACTIVIDADES NORMALES
-      if (!esGratis && !esSinAnimo) {
+      } else {
         emergenciaField.style.display = "block";
         condicionField.style.display = "block";
         epsField.style.display = "block";
@@ -259,9 +269,11 @@
         const actividadElegida = actividad.value;
         let whatsappLink = "";
 
+        // Enlace de WhatsApp según actividad
         if (actividadElegida.includes("gratis")) {
           whatsappLink = "https://chat.whatsapp.com/DgmvdOHVKp7G8BTCRyI3o3";
         } else {
+          // Link por defecto para actividades pagas (incluyendo Suesca)
           whatsappLink = "https://chat.whatsapp.com/Eg0SnfPiEKf7pri86rkzgc";
         }
 
@@ -279,7 +291,3 @@
   </script>
 </body>
 </html>
-
-
-
-
