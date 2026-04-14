@@ -196,53 +196,77 @@
     const tallaField = document.getElementById("talla-field");
     const tallaInput = document.getElementById("talla_zapatos");
 
-    function actualizarFormulario() {
-      const val = actividad.value.toLowerCase();
+function actualizarFormulario() {
+  const val = actividad.value.toLowerCase();
 
-      if (!val) {
-        formResto.style.display = "none";
-        return;
-      }
+  if (!val) {
+    formResto.style.display = "none";
+    return;
+  }
 
-      formResto.style.display = "block";
+  formResto.style.display = "block";
 
-      const esGratis = val.includes("gratis");
-      const esSinAnimo = val.includes("sin_animo_de_lucro");
-      const esSuesca = val === "suesca_escalada";
+  const esGratis = val.includes("gratis");
+  const esSinAnimo = val.includes("sin_animo_de_lucro");
+  const esSuesca = val === "suesca_escalada"; // Nota: "suesca_escalada" ya no existe en tus opciones actuales
 
-      // 🔥 LÓGICA TALLA DE ZAPATOS
-      if (esSuesca) {
-        tallaField.style.display = "block";
-        tallaInput.required = true;
-      } else {
-        tallaField.style.display = "none";
-        tallaInput.required = false;
-        tallaInput.value = ""; // Limpiar si cambia de opinión
-      }
+  // Obtención de los elementos para manipular su atributo 'required'
+  const tipoDocumentoSelect = document.querySelector('select[name="tipo_documento"]');
+  const documentoInput = document.querySelector('input[name="documento"]');
+  const epsInput = document.querySelector('input[name="eps"]');
+  const emergenciaInput = document.querySelector('input[name="emergencia"]');
+  const condicionTextarea = document.querySelector('textarea[name="condicion_medica"]');
 
-      // 🔥 SEGURO
-      if (esGratis || esSinAnimo) {
-        seguroSection.style.display = "none";
-        seguroCheckbox.required = false;
-        seguroCheckbox.checked = false;
-      } else {
-        seguroSection.style.display = "block";
-        seguroCheckbox.required = true;
-      }
+  // 🔥 LÓGICA TALLA DE ZAPATOS
+  if (esSuesca) {
+    tallaField.style.display = "block";
+    tallaInput.required = true;
+  } else {
+    tallaField.style.display = "none";
+    tallaInput.required = false;
+    tallaInput.value = ""; // Limpiar si cambia de opinión
+  }
 
-      // 🔥 VISIBILIDAD DE CAMPOS SEGÚN TIPO
-      if (esSinAnimo) {
-        emergenciaField.style.display = "none";
-        condicionField.style.display = "none";
-        epsField.style.display = "none";
-        documentoField.style.display = "none";
-      } else {
-        emergenciaField.style.display = "block";
-        condicionField.style.display = "block";
-        epsField.style.display = "block";
-        documentoField.style.display = "block";
-      }
-    }
+  // 🔥 SEGURO
+  if (esGratis || esSinAnimo) {
+    seguroSection.style.display = "none";
+    seguroCheckbox.required = false;
+    seguroCheckbox.checked = false;
+  } else {
+    seguroSection.style.display = "block";
+    seguroCheckbox.required = true;
+  }
+
+  // 🔥 GESTIÓN DE LA VISIBILIDAD DE CAMPOS ESPECÍFICOS Y SUS 'required'
+  // Campos que SIEMPRE deben estar visibles y requeridos (como el documento)
+  documentoField.style.display = "block"; // Aseguramos que el campo de documento siempre esté visible
+  tipoDocumentoSelect.required = true;    // Aseguramos que el select de tipo de documento siempre sea requerido
+  documentoInput.required = true;         // Aseguramos que el input del número de documento siempre sea requerido
+
+
+  if (esSinAnimo) {
+    // Estos campos se ocultan y dejan de ser requeridos para actividades 'sin_animo_de_lucro'
+    emergenciaField.style.display = "none";
+    emergenciaInput.required = false;
+
+    condicionField.style.display = "none";
+    condicionTextarea.required = false;
+
+    epsField.style.display = "none";
+    epsInput.required = false;
+
+  } else {
+    // Estos campos se muestran y se hacen requeridos para otras actividades
+    emergenciaField.style.display = "block";
+    emergenciaInput.required = true;
+
+    condicionField.style.display = "block";
+    condicionTextarea.required = true;
+
+    epsField.style.display = "block";
+    epsInput.required = true;
+  }
+}
 
     actividad.addEventListener("change", actualizarFormulario);
 
