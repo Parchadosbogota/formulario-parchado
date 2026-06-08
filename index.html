@@ -4,73 +4,235 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario Actividad Parchados</title>
+  <!-- Importación de Fuente Moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+
+<!-- Etiquetas de Vista Previa para WhatsApp -->
+<meta property="og:title" content="Registro Actividades - Parchados">
+<meta property="og:description" content="Únete a nuestra próxima aventura. ¡Regístrate aquí!">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://parchadosbogota.github.io/formulario-parchado/">
+
+<!-- LINK DIRECTO A TU IMAGEN EN GITHUB -->
+<meta property="og:image" content="https://parchadosbogota.github.io/formulario-parchado/img/FORMULARIO.png">
+<meta property="og:image:secure_url" content="https://parchadosbogota.github.io/formulario-parchado/img/FORMULARIO.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Evitar caché antigua -->
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+
+    :root {
+      --primary: #FF914D; /* Naranja original refinado */
+      --primary-hover: #e87e33;
+      --secondary: #00137e; /* Azul profundo */
+      --text-main: #2d3436;
+      --text-muted: #636e72;
+      --bg-gradient: linear-gradient(135deg, #ff774d 0%, #ff9710 50%, #ff774d 100%);
+      --card-bg: #ffffff;
+      --input-bg: #f1f3f5;
+      --border-radius: 12px;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom, #ff774d, #ff9710, #00137e);
-      padding: 0 20px 40px;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 15px;
+      color: var(--text-main);
     }
+
     .banner {
       width: 100%;
-      max-height: 180px;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto;
-      padding: 20px;
+      max-width: 400px;
+      height: auto;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
     }
+
     .form-container {
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      max-width: 700px;
-      margin: 20px auto;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: var(--shadow);
+      animation: fadeIn 0.6s ease-out;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     h2 {
       text-align: center;
-      color: #2E294E;
+      color: var(--secondary);
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 25px;
+      font-size: 1.5rem;
     }
+
     label {
       display: block;
-      margin: 15px 0 5px;
-      color: #333;
+      margin: 18px 0 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--secondary);
     }
-    input, select, textarea {
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea {
       width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 1em;
+      padding: 12px 15px;
+      border-radius: var(--border-radius);
+      border: 2px solid transparent;
+      background-color: var(--input-bg);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      color: var(--text-main);
     }
-    button {
-      background-color: #FF914D;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1em;
-      margin-top: 20px;
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      background-color: #fff;
+      box-shadow: 0 0 0 4px rgba(255, 145, 77, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    /* Estilo para Checkboxes */
+    .checkbox-container {
+      display: flex;
+      align-items: flex-start;
+      margin: 12px 0;
       cursor: pointer;
-      width: 100%;
+      font-size: 0.85rem;
     }
-    button:hover {
-      background-color: #e87e33;
+
+    .checkbox-container input {
+      margin-right: 10px;
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
     }
+
+    /* Details y Summary (Acordeones) */
+    details {
+      background: #f8f9fa;
+      padding: 12px;
+      border-radius: var(--border-radius);
+      margin-top: 15px;
+      border: 1px solid #e9ecef;
+    }
+
     summary {
-      font-weight: bold;
-      font-size: 1em;
+      font-weight: 600;
       cursor: pointer;
+      outline: none;
+      color: var(--secondary);
+      list-style: none;
+      display: flex;
+      align-items: center;
     }
+
+    summary::before {
+      content: '▸';
+      margin-right: 8px;
+      transition: transform 0.3s;
+      color: var(--primary);
+    }
+
+    details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    details p {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin-top: 10px;
+      padding: 0 10px;
+    }
+
     .important::before {
       content: "⚠️ ";
-      color: #c0392b;
     }
-    /* ocultar por defecto */
+
+    button {
+      background: var(--primary);
+      background: linear-gradient(to right, #FF914D, #ff774d);
+      color: white;
+      padding: 16px;
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-top: 30px;
+      cursor: pointer;
+      width: 100%;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 15px rgba(255, 145, 77, 0.3);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 145, 77, 0.4);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    /* Ocultar secciones */
     #form-resto,
     #seguro-section,
     #talla-field {
       display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    /* Ajustes específicos para celular */
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 20px;
+        border-radius: 15px;
+      }
+      
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      input, select, textarea, button {
+        font-size: 16px; /* Evita zoom automático en iOS */
+      }
     }
   </style>
 </head>
@@ -79,20 +241,20 @@
   <img src="img/logo.png" alt="Logo Parchados" class="banner">
 
   <div class="form-container">
-    <h2>📝 Registro Actividad - Parchados</h2>
+    <h2>📝 Registro Actividad</h2>
 
     <form id="formulario-parchados">
 
-      <!-- Siempre visible -->
       <label>Nombre completo *</label>
-      <input type="text" name="nombre" required>
+      <input type="text" name="nombre" placeholder="Escribe tu nombre" required>
 
       <label>¿A qué actividad te inscribiste? *</label>
       <select name="actividad" id="actividad" required>
         <option value="">Selecciona una actividad</option>
-        <option value="camino_indio_cale">🏞️ Camino del indio hasta la Calera</option>
-        <option value="cayonin_sasaima">🏞️ Cayonin Sasaima</option>
-        <option value="senderismo_7_cascadas">🌈 Senderismo 7 Cascadas Arcoíris Mundo Nuevo</option>
+        <option value="Tabio_MIWA_sin_animo_de_lucro">Tabio Caminantes y corredores con MIWA</option>
+        <option value="Paseo_olla_sin_animo_de_lucro">🧑‍🦱 Paseo de olla Aniversario PARCHADOS</option>
+        <option value="Bosque_caradelindio">🏞️ Bosque Cara del indio</option>
+        <option value="Ventanas_de_Tisquizoque">🌈 Ventanas de Tisquizoque Florian Santander</option>
       </select>
 
       <div id="form-resto">
@@ -115,79 +277,89 @@
         <label>Fecha de nacimiento *</label>
         <input type="date" name="fecha_nacimiento" required>
 
-        <!-- CAMPO NUEVO: Talla de zapatos (Solo para Suesca) -->
         <div id="talla-field">
-          <label>Talla de zapatos (Para préstamo de equipo de escalada) *</label>
+          <label>Talla de zapatos (Escalada) *</label>
           <input type="number" name="talla_zapatos" id="talla_zapatos" placeholder="Ej: 38">
         </div>
 
         <div id="eps-field">
           <label>EPS o entidad de salud *</label>
-          <input type="text" name="eps" required>
+          <input type="text" name="eps" placeholder="Nombre de tu EPS" required>
         </div>
 
         <label>Número de contacto (WhatsApp) *</label>
-        <input type="tel" name="telefono" required>
+        <input type="tel" name="telefono" placeholder="Ej: 3001234567" required>
 
         <label>Correo electrónico *</label>
-        <input type="email" name="correo" required>
+        <input type="email" name="correo" placeholder="ejemplo@correo.com" required>
 
         <div id="emergencia-field">
-          <label>Contacto de emergencia (nombre y teléfono) *</label>
-          <input type="text" name="emergencia" required>
+          <label>Contacto de emergencia *</label>
+          <input type="text" name="emergencia" placeholder="Nombre y teléfono" required>
         </div>
 
         <div id="condicion-medica-field">
-          <label class="important">¿Tienes alguna condición médica que pueda afectar tu participación?</label>
-          <textarea name="condicion_medica" required></textarea>
+          <label class="important">¿Alguna condición médica?</label>
+          <textarea name="condicion_medica" placeholder="Alergias, medicamentos, cirugías recientes, etc." required></textarea>
         </div>
 
         <!-- Exoneración -->
         <details>
-          <summary class="important">⚠️ Exoneración de Responsabilidad</summary>
-          <p>Declaro que participo bajo mi responsabilidad...</p>
+          <summary class="important">Exoneración de Responsabilidad</summary>
+          <p>Declaro que participo bajo mi propia responsabilidad y riesgo. Entiendo que las actividades de aventura pueden implicar riesgos físicos y libero a los organizadores de toda responsabilidad.</p>
         </details>
-        <label><input type="checkbox" name="acepta_exoneracion" required> Acepto los términos *</label>
+        <label class="checkbox-container">
+          <input type="checkbox" name="acepta_exoneracion" required> 
+          <span>Acepto los términos de exoneración *</span>
+        </label>
 
         <!-- Autorización de imagen -->
         <details>
           <summary>📸 Autorización de uso de imagen</summary>
-          <p>Autorizo el uso de mi imagen...</p>
+          <p>Autorizo el uso de material fotográfico y audiovisual donde aparezca mi imagen para fines promocionales de la comunidad Parchados en redes sociales y medios digitales.</p>
         </details>
-        <label><input type="checkbox" name="autorizo_imagen" required> Acepto el uso de mi imagen *</label>
+        <label class="checkbox-container">
+          <input type="checkbox" name="autorizo_imagen" required> 
+          <span>Acepto el uso de mi imagen *</span>
+        </label>
 
         <!-- Tratamiento de datos -->
         <details>
           <summary>🔐 Autorización de datos personales</summary>
-          <p>Acepto el tratamiento de mis datos...</p>
+          <p>Acepto el tratamiento de mis datos personales de acuerdo a la Ley 1581 de 2012 para fines relacionados con la organización de la actividad y comunicación de eventos futuros.</p>
         </details>
-        <label><input type="checkbox" name="autorizo_datos" required> Acepto tratamiento de datos *</label>
+        <label class="checkbox-container">
+          <input type="checkbox" name="autorizo_datos" required> 
+          <span>Acepto tratamiento de datos *</span>
+        </label>
 
         <!-- Seguro -->
         <div id="seguro-section">
           <details>
             <summary>🛡️ Seguro para la actividad</summary>
-            <p>La actividad incluye seguro de accidentes...</p>
+            <p>La póliza cubre asistencia médica por accidente, traslado médico de emergencia, indemnizaciones, asistencia legal durante el evento.</p>
           </details>
-          <label><input type="checkbox" name="seguro_actividad" id="seguro_actividad"> Confirmo haber leído el seguro *</label>
+          <label class="checkbox-container">
+            <input type="checkbox" name="seguro_actividad" id="seguro_actividad"> 
+            <span>Confirmo haber leído la cobertura del seguro *</span>
+          </label>
         </div>
 
-        <button type="submit">Enviar</button>
+        <button type="submit">Enviar Registro</button>
 
       </div>
     </form>
   </div>
 
   <script>
+    // --- TU LÓGICA DE JAVASCRIPT ORIGINAL SE MANTIENE AQUÍ ---
     const FORM_URL = "https://script.google.com/macros/s/AKfycbzFv0m1LctPy-5pklikmsdkYs19ZjK7LV2HiyfPWn88BJ0H7JKWl-8sB9jXt7RWn5zJ/exec";
 
     const actividad = document.getElementById("actividad");
     const formResto = document.getElementById("form-resto");
-
     const seguroSection = document.getElementById("seguro-section");
     const seguroCheckbox = document.getElementById("seguro_actividad");
 
-    // Campos a ocultar individualmente
     const emergenciaField = document.getElementById("emergencia-field");
     const epsField = document.getElementById("eps-field");
     const condicionField = document.getElementById("condicion-medica-field");
@@ -195,87 +367,70 @@
     const tallaField = document.getElementById("talla-field");
     const tallaInput = document.getElementById("talla_zapatos");
 
-function actualizarFormulario() {
-  const val = actividad.value.toLowerCase();
+    function actualizarFormulario() {
+      const val = actividad.value.toLowerCase();
+      if (!val) {
+        formResto.style.display = "none";
+        return;
+      }
+      formResto.style.display = "block";
 
-  if (!val) {
-    formResto.style.display = "none";
-    return;
-  }
+      const esGratis = val.includes("gratis");
+      const esSinAnimo = val.includes("sin_animo_de_lucro");
+      const esSuesca = val === "suesca_escalada";
 
-  formResto.style.display = "block";
+      const tipoDocumentoSelect = document.querySelector('select[name="tipo_documento"]');
+      const documentoInput = document.querySelector('input[name="documento"]');
+      const epsInput = document.querySelector('input[name="eps"]');
+      const emergenciaInput = document.querySelector('input[name="emergencia"]');
+      const condicionTextarea = document.querySelector('textarea[name="condicion_medica"]');
 
-  const esGratis = val.includes("gratis");
-  const esSinAnimo = val.includes("sin_animo_de_lucro");
-  const esSuesca = val === "suesca_escalada"; // Nota: "suesca_escalada" ya no existe en tus opciones actuales
+      if (esSuesca) {
+        tallaField.style.display = "block";
+        tallaInput.required = true;
+      } else {
+        tallaField.style.display = "none";
+        tallaInput.required = false;
+        tallaInput.value = "";
+      }
 
-  // Obtención de los elementos para manipular su atributo 'required'
-  const tipoDocumentoSelect = document.querySelector('select[name="tipo_documento"]');
-  const documentoInput = document.querySelector('input[name="documento"]');
-  const epsInput = document.querySelector('input[name="eps"]');
-  const emergenciaInput = document.querySelector('input[name="emergencia"]');
-  const condicionTextarea = document.querySelector('textarea[name="condicion_medica"]');
+      if (esGratis || esSinAnimo) {
+        seguroSection.style.display = "none";
+        seguroCheckbox.required = false;
+        seguroCheckbox.checked = false;
+      } else {
+        seguroSection.style.display = "block";
+        seguroCheckbox.required = true;
+      }
 
-  // 🔥 LÓGICA TALLA DE ZAPATOS
-  if (esSuesca) {
-    tallaField.style.display = "block";
-    tallaInput.required = true;
-  } else {
-    tallaField.style.display = "none";
-    tallaInput.required = false;
-    tallaInput.value = ""; // Limpiar si cambia de opinión
-  }
+      documentoField.style.display = "block";
+      tipoDocumentoSelect.required = true;
+      documentoInput.required = true;
 
-  // 🔥 SEGURO
-  if (esGratis || esSinAnimo) {
-    seguroSection.style.display = "none";
-    seguroCheckbox.required = false;
-    seguroCheckbox.checked = false;
-  } else {
-    seguroSection.style.display = "block";
-    seguroCheckbox.required = true;
-  }
-
-  // 🔥 GESTIÓN DE LA VISIBILIDAD DE CAMPOS ESPECÍFICOS Y SUS 'required'
-  // Campos que SIEMPRE deben estar visibles y requeridos (como el documento)
-  documentoField.style.display = "block"; // Aseguramos que el campo de documento siempre esté visible
-  tipoDocumentoSelect.required = true;    // Aseguramos que el select de tipo de documento siempre sea requerido
-  documentoInput.required = true;         // Aseguramos que el input del número de documento siempre sea requerido
-
-
-  if (esSinAnimo) {
-    // Estos campos se ocultan y dejan de ser requeridos para actividades 'sin_animo_de_lucro'
-    emergenciaField.style.display = "none";
-    emergenciaInput.required = false;
-
-    condicionField.style.display = "none";
-    condicionTextarea.required = false;
-
-    epsField.style.display = "none";
-    epsInput.required = false;
-
-  } else {
-    // Estos campos se muestran y se hacen requeridos para otras actividades
-    emergenciaField.style.display = "block";
-    emergenciaInput.required = true;
-
-    condicionField.style.display = "block";
-    condicionTextarea.required = true;
-
-    epsField.style.display = "block";
-    epsInput.required = true;
-  }
-}
+      if (esSinAnimo) {
+        emergenciaField.style.display = "none";
+        emergenciaInput.required = false;
+        condicionField.style.display = "none";
+        condicionTextarea.required = false;
+        epsField.style.display = "none";
+        epsInput.required = false;
+      } else {
+        emergenciaField.style.display = "block";
+        emergenciaInput.required = true;
+        condicionField.style.display = "block";
+        condicionTextarea.required = true;
+        epsField.style.display = "block";
+        epsInput.required = true;
+      }
+    }
 
     actividad.addEventListener("change", actualizarFormulario);
 
     document.getElementById("formulario-parchados").addEventListener("submit", async function (e) {
       e.preventDefault();
-
       const form = e.target;
       const formData = new FormData(form);
       const data = {};
-
       for (const [key, value] of formData.entries()) {
         data[key] = value;
       }
@@ -289,22 +444,14 @@ function actualizarFormulario() {
         });
 
         const actividadElegida = actividad.value;
-        let whatsappLink = "";
-
-        // Enlace de WhatsApp según actividad
-        if (actividadElegida.includes("gratis")) {
-          whatsappLink = "https://chat.whatsapp.com/DgmvdOHVKp7G8BTCRyI3o3";
-        } else {
-          // Link por defecto para actividades pagas (incluyendo Suesca)
-          whatsappLink = "https://chat.whatsapp.com/Eg0SnfPiEKf7pri86rkzgc";
-        }
+        let whatsappLink = actividadElegida.includes("gratis") 
+          ? "https://chat.whatsapp.com/DgmvdOHVKp7G8BTCRyI3o3"
+          : "https://chat.whatsapp.com/Eg0SnfPiEKf7pri86rkzgc";
 
         alert("✅ Gracias por registrarte. ¡Nos vemos en la aventura!\nÚnete a nuestro grupo de WhatsApp.");
         window.location.href = whatsappLink;
-
         form.reset();
         actualizarFormulario();
-
       } catch (error) {
         console.error("Error al enviar:", error);
         alert("❌ Error de conexión. Intenta más tarde.");
