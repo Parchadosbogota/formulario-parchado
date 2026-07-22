@@ -252,11 +252,12 @@
       <label>¿A qué actividad te inscribiste? *</label>
       <select name="actividad" id="actividad" required>
         <option value="">Selecciona una actividad</option>
-        <option value="Tabio_MIWA_sin_animo_de_lucro">Tabio Caminantes y corredores con MIWA</option>
-                <option value="Bosque_caradelindio">🏞️ Bosque Cara del indio</option>
-        <option value="Ventanas_de_Tisquizoque">🌈 Ventanas de Tisquizoque Florian Santander</option>
-        <option value="Alban_sasaima">🌄🌿Alban a Sasaima</option>
-        <option value="saltodelasmonjas">🌲Salto de las Monjas💧</option>
+        <option value="alban_sasaima">🌄🌿 Albán a Sasaima</option>
+        <option value="embalse_san_rafael">💧 Senderismo Embalse San Rafael </option>
+        <option value="cascadas_abuela_oscura_ninos">💧🌲 2 Cascadas: La Abuela y Oscura (Principiantes y Niños)</option>
+        <option value="cuevas_de_tenjo">⛰️ Senderismo Cuevas de Tenjo</option>
+        <option value="gratis_monserrate_tricolor">💛💙❤️ Monserrate Tricolor</option>
+        <option value="inmersion_hielo_sin_animo_de_lucro">❄️ Inmersión en Hielo</option>
       </select>
 
       <div id="form-resto">
@@ -300,50 +301,95 @@
           <input type="text" name="emergencia" placeholder="Nombre y teléfono" required>
         </div>
 
-        <div id="condicion-medica-field">
-          <label class="important">¿Alguna condición médica?</label>
-          <textarea name="condicion_medica" placeholder="Alergias, medicamentos, cirugías recientes, etc." required></textarea>
+<!-- Condición Médica -->
+        <div id="condicion-medica-field" style="margin-bottom: 20px;">
+          <label class="important" style="font-weight: bold; color: #d9534f;">¿Alguna condición médica o alergia?</label>
+          <p style="font-size: 0.85em; color: #666; margin-bottom: 5px;">Indique alergias, medicamentos actuales, cirugías recientes o lesiones. Si no tiene ninguna, escriba <strong>"NINGUNA"</strong>.</p>
+          <textarea name="condicion_medica" placeholder="Ej: Asma, alergia a la penicilina, ninguna..." required style="width: 100%; border: 1px solid #ccc; padding: 8px;"></textarea>
         </div>
 
         <!-- Exoneración -->
-        <details>
-          <summary class="important">Exoneración de Responsabilidad</summary>
-          <p>Declaro que participo bajo mi propia responsabilidad y riesgo. Entiendo que las actividades de aventura pueden implicar riesgos físicos y libero a los organizadores de toda responsabilidad.</p>
+        <details style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+          <summary class="important" style="font-weight: bold; cursor: pointer;">⚠️ EXONERACIÓN DE RESPONSABILIDAD Y ACEPTACIÓN DE RIESGOS</summary>
+          <div style="font-size: 0.9em; margin-top: 10px; text-align: justify;">
+            <p><strong>1. OBJETO Y ACTIVIDAD:</strong> El suscrito participa voluntariamente en la actividad de senderismo/trekking organizada por <strong>Cristian Camilo Guzman Morales</strong> y el Emprendimiento <strong>parchadosbogota</strong>. Entiendo que esta actividad se desarrolla en entornos naturales de topografía variable (montaña, selva, páramo) y bajo condiciones climáticas cambiantes.</p>
+
+            <p><strong>2. ASUNCIÓN DE RIESGOS (Art. 1604 Código Civil):</strong> Reconozco que el senderismo es una actividad de turismo de aventura que implica riesgos inherentes que no pueden eliminarse por completo, tales como: <strong>caídas a nivel o en altura, resbalones en terrenos húmedos o inestables, desprendimiento de rocas, encuentros con fauna silvestre o insectos, agotamiento físico y exposición a condiciones meteorológicas adversas</strong> (lluvia, descargas eléctricas, frío/calor extremo). Acepto y asumo voluntariamente dichos riesgos al momento de inscribirme.</p>
+
+            <p><strong>3. ESTADO DE SALUD Y DECLARACIÓN DE VOLUNTAD:</strong> Declaro bajo la gravedad de juramento que cuento con la <strong>aptitud física y mental necesaria</strong> para la actividad. Manifiesto que no padezco de afecciones cardíacas, respiratorias, lesiones óseas recientes, ni cualquier condición médica que me impida realizar esfuerzo físico. Es mi obligación informar previamente si tengo alguna alergia severa o condición especial.</p>
+
+            <p><strong>4. AMPARO DE SEGUROS (Magenta Seguros):</strong> Se me ha informado que la organización ha contratado para este evento una póliza de <strong>Accidentes Personales y Asistencia Médica con la compañía Magenta Seguros</strong>. Entiendo que el propósito de este seguro es brindar atención médica inmediata en caso de un siniestro durante la actividad en la montaña. Acepto que la cobertura de dicha póliza tiene un <strong>límite económico y de servicios especificado por la aseguradora</strong>. Entiendo que cualquier gasto que exceda los límites de la póliza contratada, o que no esté cubierto por la misma debido a la naturaleza del accidente, será asumido por mi cuenta o a través de mi respectiva EPS/ARL.</p>
+
+            <p><strong>5. OBLIGACIONES DEL PARTICIPANTE:</strong> Me comprometo a cumplir con las normas de seguridad establecidas por los guías, a no separarme del grupo, a utilizar el calzado y equipo recomendado, y a no consumir sustancias alcohólicas o psicoactivas antes o durante la ruta. Entiendo que el incumplimiento de estas normas constituye <strong>"Culpa Exclusiva de la Víctima"</strong>, exonerando a los organizadores de toda responsabilidad.</p>
+
+            <p><strong>6. EXONERACIÓN DE RESPONSABILIDAD:</strong> De conformidad con las normas de responsabilidad civil en Colombia, <strong>libero de toda responsabilidad a los organizadores, guías y personal de apoyo</strong> por lesiones, daños materiales o cualquier perjuicio derivado de accidentes imprevistos, caso fortuito, fuerza mayor o por mi propio descuido o negligencia, siempre que la organización haya cumplido con los protocolos de seguridad y el suministro del seguro mencionado.</p>
+          </div>
         </details>
-        <label class="checkbox-container">
+        <label class="checkbox-container" style="display: block; margin-bottom: 20px;">
           <input type="checkbox" name="acepta_exoneracion" required> 
-          <span>Acepto los términos de exoneración *</span>
+          <span style="font-size: 0.95em;">He leído, entiendo y acepto la <strong>Exoneración de Responsabilidad</strong> *</span>
         </label>
 
         <!-- Autorización de imagen -->
-        <details>
-          <summary>📸 Autorización de uso de imagen</summary>
-          <p>Autorizo el uso de material fotográfico y audiovisual donde aparezca mi imagen para fines promocionales de la comunidad Parchados en redes sociales y medios digitales.</p>
+        <details style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+          <summary style="cursor: pointer;">📸 Autorización de uso de imagen</summary>
+          <p style="font-size: 0.9em; margin-top: 10px;">Autorizo a <strong>Parchadosbogota</strong> el uso de material fotográfico y audiovisual donde aparezca mi imagen para fines promocionales en redes sociales y medios digitales.</p>
         </details>
-        <label class="checkbox-container">
+        <label class="checkbox-container" style="display: block; margin-bottom: 20px;">
           <input type="checkbox" name="autorizo_imagen" required> 
-          <span>Acepto el uso de mi imagen *</span>
+          <span>Acepto el uso de mi imagen con fines promocionales *</span>
         </label>
 
         <!-- Tratamiento de datos -->
-        <details>
-          <summary>🔐 Autorización de datos personales</summary>
-          <p>Acepto el tratamiento de mis datos personales de acuerdo a la Ley 1581 de 2012 para fines relacionados con la organización de la actividad y comunicación de eventos futuros.</p>
+        <details style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+          <summary style="cursor: pointer;">🔐 Protección de Datos (Habeas Data)</summary>
+          <p style="font-size: 0.9em; margin-top: 10px;">De acuerdo con la <strong>Ley 1581 de 2012</strong>, autorizo el tratamiento de mis datos personales para fines logísticos, de seguridad y comunicación de eventos de <strong>Parchadosbogota</strong>. Podré solicitar la supresión de mis datos en cualquier momento.</p>
         </details>
-        <label class="checkbox-container">
+        <label class="checkbox-container" style="display: block; margin-bottom: 20px;">
           <input type="checkbox" name="autorizo_datos" required> 
-          <span>Acepto tratamiento de datos *</span>
+          <span>Acepto tratamiento de datos personales *</span>
         </label>
 
         <!-- Seguro -->
-        <div id="seguro-section">
+        <div id="seguro-section" style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #eee;">
           <details>
-            <summary>🛡️ Seguro para la actividad</summary>
-            <p>La póliza cubre asistencia médica por accidente, traslado médico de emergencia, indemnizaciones, asistencia legal durante el evento.</p>
+            <summary style="font-weight: bold; cursor: pointer; color: #2c3e50;">🛡️ DETALLES DE TU SEGURO (MAGENTA SEGUROS)</summary>
+            <div style="font-size: 0.9em; margin-top: 10px;">
+              <p>Esta cobertura está diseñada para eventos súbitos e imprevistos durante la actividad.</p>
+              
+              <p><strong>1. ¿Qué cubre el Seguro Diario?</strong></p>
+              <ul style="padding-left: 20px;">
+                <li><strong>Asistencia Médica de Urgencia:</strong> Atención inicial, consultas de urgencia y hospitalización en el centro más cercano.</li>
+                <li><strong>Medicamentos Recetados:</strong> Gastos suministrados en urgencia o recetados tras el accidente (Topes según plan, ej. $250.000 COP).</li>
+                <li><strong>Traslado Sanitario / Evacuación:</strong> Coordinación y cobertura del traslado idóneo a centros de mayor complejidad.</li>
+                <li><strong>Invalidez Accidental:</strong> Indemnización por pérdidas físicas severas o parálisis causadas por el accidente.</li>
+                <li><strong>Muerte Accidental:</strong> Incluye eventos como ahogamiento o fallecimiento en transporte (con sublímites).</li>
+              </ul>
+
+              <p style="background: #e8f5e9; padding: 10px; border-radius: 5px; border-left: 4px solid #2e7d32;">
+                <strong>🌟 Dato Clave:</strong> Un diferencial importante de Magenta es que <strong>cubre accidentes incluso bajo los efectos del alcohol</strong> (bebidas embriagantes), lo cual suele ser una exclusión común en otras compañías.
+              </p>
+
+              <p><strong>2. Números de Atención (Emergencias 24 Horas):</strong></p>
+              <ul style="list-style: none; padding-left: 0;">
+                <li>📞 <strong>Línea gratuita (Colombia):</strong> <a href="tel:018000413851">01 8000 413 851</a></li>
+                <li>💬 <strong>WhatsApp Asistencia:</strong> <a href="https://wa.me/573137621051" target="_blank">+57 313 762 1051</a></li>
+                <li>📞 <strong>Medellín:</strong> <a href="tel:6044480314">(604) 448 0314</a></li>
+                <li style="font-size: 0.85em; color: #666; margin-top: 5px;">📍 <strong>Números Internacionales:</strong> EE.UU. (+1 305 459 8648), España (+34 91 060 3925), Chile (+56 2 321 031 42).</li>
+              </ul>
+
+              <p><strong>3. ¿Cómo reclamar (Post-emergencia)?</strong></p>
+              <p>Para reembolsos o formalizar reclamaciones, envíe: reporte del caso, documento de identidad, comprobante del seguro y documentación médica (historias clínicas, facturas y fórmulas) a:</p>
+              <ul style="list-style: none; padding-left: 0;">
+                <li>📧 <strong>Correo:</strong> <a href="mailto:info@magentaseguros.com">info@magentaseguros.com</a></li>
+                <li>🌐 <strong>Web:</strong> www.magentaseguros.com</li>
+                <li>📍 <strong>Oficina Medellín:</strong> Calle 45F # 73-36, Medellín, Antioquia.</li>
+              </ul>
+            </div>
           </details>
-          <label class="checkbox-container">
-            <input type="checkbox" name="seguro_actividad" id="seguro_actividad"> 
-            <span>Confirmo haber leído la cobertura del seguro *</span>
+          <label class="checkbox-container" style="display: block; margin-top: 10px;">
+            <input type="checkbox" name="seguro_actividad" required> 
+            <span style="font-size: 0.9em;">Confirmo que conozco los límites del seguro y los números de emergencia de <strong>Magenta Seguros</strong> *</span>
           </label>
         </div>
 
