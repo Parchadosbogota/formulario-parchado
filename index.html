@@ -432,15 +432,6 @@
     const valorTransferidoField = document.getElementById("valor-transferido-field");
 const valorTransferidoInput = document.getElementById("valor_transferido");
 
-if (esSinAnimo) {
-    valorTransferidoField.style.display = "none";
-    valorTransferidoInput.required = false;
-    valorTransferidoInput.value = "";
-} else {
-    valorTransferidoField.style.display = "block";
-    valorTransferidoInput.required = true;
-}
-
     function actualizarFormulario() {
       const val = actividad.value.toLowerCase();
       if (!val) {
