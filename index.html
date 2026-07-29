@@ -256,9 +256,24 @@
         <option value="embalse_san_rafael">💧 Senderismo Embalse San Rafael </option>
         <option value="cascadas_abuela_oscura_ninos">💧🌲 2 Cascadas: La Abuela y Oscura (Principiantes y Niños)</option>
         <option value="cuevas_de_tenjo">⛰️ Senderismo Cuevas de Tenjo</option>
-        <option value="gratis_monserrate_tricolor">💛💙❤️ Monserrate Tricolor</option>
-        <option value="inmersion_hielo_sin_animo_de_lucro">❄️ Inmersión en Hielo</option>
+        <option value="sin_animo_de_lucro_monserrate_tricolor">💛💙❤️ Monserrate Tricolor</option>
+        <option value="inmersion_hielo">❄️ Inmersión en Hielo</option>
       </select>
+
+      <div id="valor-transferido-field">
+        <label>¿Cuánto transferiste para la reservación? *</label>
+        <input
+          type="number"
+          name="valor_transferido"
+          id="valor_transferido"
+          placeholder="Ej: 45000"
+          min="0"
+          step="1"
+          inputmode="numeric"
+          onkeydown="if(['e','E','+','-','.'].includes(event.key)) event.preventDefault();"
+          oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+          required>
+      </div>
 
       <div id="form-resto">
 
@@ -414,6 +429,17 @@
     const documentoField = document.getElementById("documento-field");
     const tallaField = document.getElementById("talla-field");
     const tallaInput = document.getElementById("talla_zapatos");
+    const valorTransferidoField = document.getElementById("valor-transferido-field");
+const valorTransferidoInput = document.getElementById("valor_transferido");
+
+if (esSinAnimo) {
+    valorTransferidoField.style.display = "none";
+    valorTransferidoInput.required = false;
+    valorTransferidoInput.value = "";
+} else {
+    valorTransferidoField.style.display = "block";
+    valorTransferidoInput.required = true;
+}
 
     function actualizarFormulario() {
       const val = actividad.value.toLowerCase();
@@ -492,9 +518,8 @@
         });
 
         const actividadElegida = actividad.value;
-        let whatsappLink = actividadElegida.includes("gratis") 
-          ? "https://chat.whatsapp.com/DgmvdOHVKp7G8BTCRyI3o3"
-          : "https://chat.whatsapp.com/Eg0SnfPiEKf7pri86rkzgc";
+        let whatsappLink = "https://chat.whatsapp.com/LJln3lP5xy5407CAQ8YCWR";
+
 
         alert("✅ Gracias por registrarte. ¡Nos vemos en la aventura!\nÚnete a nuestro grupo de WhatsApp.");
         window.location.href = whatsappLink;
